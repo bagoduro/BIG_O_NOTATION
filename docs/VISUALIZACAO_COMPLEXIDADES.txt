@@ -1,0 +1,236 @@
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║                    VISUALIZAÇÃO DE COMPLEXIDADES                              ║
+║                  Comparação O(n) para diferentes algoritmos                    ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+CRESCIMENTO DE OPERAÇÕES COM O TAMANHO DA ENTRADA
+═══════════════════════════════════════════════════
+
+Para n = [10, 100, 1000, 10000]
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ O(1) - TEMPO CONSTANTE                                                       │
+│ Exemplo: Acesso a elemento de array, operação aritmética                     │
+│                                                                              │
+│     n=10    n=100   n=1000  n=10000                                          │
+│      1        1       1        1      ← Sempre 1 operação                    │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ O(log n) - LOGARÍTMICO                                                       │
+│ Exemplo: Busca Binária (Exercício 2)                                         │
+│                                                                              │
+│     n=10    n=100   n=1000  n=10000                                          │
+│      3.3    6.6     10      13.3     ← log₂(n)                               │
+│                                                                              │
+│ Gráfico:                                                                     │
+│    │     ╱                                                                   │
+│    │   ╱                                                                     │
+│    │ ╱                                                                       │
+│    ├─────────────────────────────────────────                               │
+│    └────────────────────────────────────────── n                            │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ O(n) - LINEAR                                                                │
+│ Exemplo: Busca Linear (Exercício 1), Palíndromo (Exercício 8)                │
+│                                                                              │
+│     n=10    n=100   n=1000  n=10000                                          │
+│      10     100     1000    10000    ← Exatamente n                          │
+│                                                                              │
+│ Gráfico:                                                                     │
+│    │                                   ╱                                    │
+│    │                                 ╱                                      │
+│    │                               ╱                                        │
+│    │                             ╱                                          │
+│    ├────────────────────────────────────────                               │
+│    └────────────────────────────────────────── n                           │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ O(n log n) - LINEARÍTMICO                                                    │
+│ Exemplo: Merge Sort (Exercício 6), QuickSort médio (Exercício 5)             │
+│                                                                              │
+│     n=10    n=100   n=1000  n=10000                                          │
+│      33     664     9965    132877   ← n·log₂(n)                             │
+│                                                                              │
+│ Gráfico:                                                                     │
+│    │                                       ╱╱                               │
+│    │                                   ╱╱                                   │
+│    │                               ╱╱                                       │
+│    │                           ╱╱                                           │
+│    ├────────────────────────────────────────                               │
+│    └────────────────────────────────────────── n                           │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ O(n²) - QUADRÁTICO                                                           │
+│ Exemplo: Bubble Sort (Exercício 3), Selection Sort (Exercício 4)             │
+│                                                                              │
+│     n=10    n=100   n=1000  n=10000                                          │
+│      100    10000   1000000 100000000 ← n²                                   │
+│                                                                              │
+│ Gráfico:                                                                     │
+│    │                                                    ╱╱                  │
+│    │                                              ╱╱                        │
+│    │                                        ╱╱                              │
+│    │                                   ╱                                    │
+│    ├────────────────────────────────────────                               │
+│    └────────────────────────────────────────── n                           │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ O(2ⁿ) - EXPONENCIAL                                                          │
+│ Exemplo: Fibonacci Recursivo (Exercício 7)                                   │
+│                                                                              │
+│     n=10    n=20    n=30    n=35                                             │
+│      1024   1048576 1073741824 34359738368 ← 2ⁿ                              │
+│                                                                              │
+│ CRESCE DESCONTROLADAMENTE!                                                   │
+│                                                                              │
+│ Gráfico:                                                                     │
+│    │                                                    ╱╱╱                 │
+│    │                                              ╱╱╱╱                      │
+│    │                                        ╱╱╱╱╱                           │
+│    │                                    ╱╱╱╱                                │
+│    ├────────────────────────────────────────                               │
+│    └────────────────────────────────────────── n                           │
+│                                                                              │
+│ Para Fibonacci:                                                              │
+│ • fib(10): 177 chamadas          (< 1ms)                                    │
+│ • fib(20): 21.891 chamadas       (< 1ms)                                    │
+│ • fib(30): 2.097.151 chamadas    (9ms)                                      │
+│ • fib(35): 29.860.703 chamadas   (154ms!)  ← MUITO LENTO!                   │
+│ • fib(40): ~1.099.511.627.776 chamadas     ← IMPRATICÁVEL!                  │
+│                                                                              │
+│ Com Programação Dinâmica: O(n) = 35 operações para fib(35) em < 1ms ✓      │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+COMPARAÇÃO LADO A LADO
+══════════════════════
+
+     Tamanho da Entrada (n)
+     ↓
+     10      100       1000      10000      100000
+     ↓       ↓         ↓         ↓          ↓
+
+O(1)     1       1         1         1          1
+O(log n) 3.3     6.6       10        13.3       16.6
+O(n)     10      100       1000      10000      100000
+O(n log n) 33   664       9965      132877     1.66M
+O(n²)    100    10K       1M        100M       10B
+O(2ⁿ)    1K     1.2K*     1T*       36T*       [IMPOSSÍVEL]
+
+* = impraticável em tempo razoável
+K = mil
+M = milhão
+B = bilhão
+T = trilhão
+
+IMPLICAÇÕES PRÁTICAS
+════════════════════
+
+┌─ ESCOLHA DO ALGORITMO ─────────────────────────────────────────┐
+│                                                                 │
+│ Para n = 1000 elementos:                                        │
+│                                                                 │
+│ • O(log n):   10 operações        ✓ EXCELENTE                  │
+│ • O(n):       1000 operações      ✓ BOM                        │
+│ • O(n log n): 10000 operações     ✓ ACEITÁVEL                  │
+│ • O(n²):      1.000.000 operações ⚠ DEVAGAR                    │
+│ • O(2ⁿ):      [IMPOSSÍVEL]        ✗ NÃO USE                    │
+│                                                                 │
+│ Diferença: O(n²) é 100x mais lento que O(n log n)!             │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+
+ALGORITMOS POR ORDEM DE VELOCIDADE (do mais rápido para o mais lento)
+═════════════════════════════════════════════════════════════════════
+
+1️⃣  O(1)  - Tempo Constante
+    └─ Acesso direto a arrays, operações primitivas
+
+2️⃣  O(log n) - Logarítmico
+    └─ Busca Binária (Exercício 2)
+
+3️⃣  O(n) - Linear
+    ├─ Busca Linear (Exercício 1)
+    ├─ Verificação de Palíndromo (Exercício 8)
+    └─ Programação Dinâmica - Fibonacci (Exercício 7)
+
+4️⃣  O(n log n) - Linearítmico
+    ├─ Merge Sort (Exercício 6)
+    └─ QuickSort (caso médio, Exercício 5)
+
+5️⃣  O(n²) - Quadrático
+    ├─ Bubble Sort (Exercício 3)
+    ├─ Selection Sort (Exercício 4)
+    └─ QuickSort (pior caso, Exercício 5)
+
+6️⃣  O(n·m) - Produto de dois tamanhos
+    └─ Busca de Padrão (Exercício 9)
+
+7️⃣  O(V+E) - Linear em relação ao grafo
+    ├─ DFS (Exercício 10)
+    └─ BFS (Exercício 10)
+
+8️⃣  O(2ⁿ) - Exponencial ❌ EVITAR!
+    └─ Fibonacci Recursivo Simples (Exercício 7)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+REGRA DE OURO
+═════════════
+
+Se o seu algoritmo tem:
+• O(1): Perfeito! ⭐⭐⭐⭐⭐
+• O(log n): Excelente! ⭐⭐⭐⭐
+• O(n): Bom! ⭐⭐⭐
+• O(n log n): Aceitável ⭐⭐
+• O(n²): Devagar, considere otimizar ⚠
+• O(2ⁿ): PROBLEMA! Use DP ou outro algoritmo ❌
+
+═══════════════════════════════════════════════════════════════════════════════
+
+DEMONSTRAÇÃO VISUAL: FIBONACCI
+══════════════════════════════
+
+Recursivo Simples vs Com Memoização
+
+             fib(5)
+            /      \
+        fib(4)     fib(3)
+       /      \    /     \
+    fib(3)  fib(2) fib(2) fib(1)
+   /    \    / \   / \
+fib(2) fib(1) ... fib(0)
+
+Vê o problema? fib(3) é calculado DUAS vezes, fib(2) TRÊS vezes!
+Isso é recompilado recursivamente para cada subcálculo.
+
+Para fib(35): 29.860.703 chamadas! 🤯
+
+Com Memoização:
+fib(0) = 0 ✓ (armazenado)
+fib(1) = 1 ✓ (armazenado)
+fib(2) = 1 ✓ (armazenado)
+... (cada valor calculado UMA ÚNICA VEZ)
+fib(35) = ? ✓ (resultado em < 1ms)
+
+Apenas 69 chamadas! 📊
+
+═══════════════════════════════════════════════════════════════════════════════
+
+CONCLUSÃO
+═════════
+
+A análise de complexidade é FUNDAMENTAL para escolher bons algoritmos.
+
+Diferença de desempenho:
+• Fibonacci(35):    154ms vs <1ms   = 1500x mais rápido ✓
+• Merge Sort vs BS: O(n log n) vs O(n²) = 100x mais rápido ✓
+• Binary Search vs Linear: O(log n) vs O(n) = até 1000x mais rápido ✓
+
+Portanto: SEMPRE analise a complexidade antes de implementar!
+
+═══════════════════════════════════════════════════════════════════════════════

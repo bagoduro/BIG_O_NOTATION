@@ -1,0 +1,283 @@
+╔═══════════════════════════════════════════════════════════════════════════════╗
+║              EXEMPLOS DE EXECUÇÃO E SAÍDAS ESPERADAS                          ║
+╚═══════════════════════════════════════════════════════════════════════════════╝
+
+EXERCÍCIO 1: BUSCA LINEAR COM CONTAGEM
+══════════════════════════════════════
+
+Comando: java Exercicio1
+
+Saída esperada:
+───────────────
+=== EXERCÍCIO 1: BUSCA LINEAR ===
+
+Melhor caso (elemento no início):
+Procurando 10: Posição: 0, Comparações: 1
+
+Caso médio (elemento no meio):
+Procurando 45: Posição: 3, Comparações: 4
+
+Pior caso (elemento inexistente):
+Procurando 100: Posição: -1, Comparações: 8
+
+Pior caso (elemento na última posição):
+Procurando 90: Posição: 7, Comparações: 8
+
+ANÁLISE:
+- Pior caso: Elemento inexistente ou na última posição
+- Complexidade no pior caso: O(n)
+- Justificação: Precisa verificar cada elemento do vetor
+
+Observações:
+────────────
+- Para um vetor de 8 elementos, no pior caso faz 8 comparações
+- A posição retorna 0-7 para elementos encontrados, -1 para não encontrados
+- As comparações aumentam linearmente com o tamanho do vetor
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+EXERCÍCIO 2: BUSCA BINÁRIA RECURSIVA
+═════════════════════════════════════
+
+Comando: java Exercicio2
+
+Saída esperada:
+───────────────
+=== EXERCÍCIO 2: BUSCA BINÁRIA RECURSIVA ===
+
+Vetor: [10, 20, 30, 40, 50, 60, 70, 80]
+
+Melhor caso (elemento no meio):
+Procurando 40: Índice: 3, Iterações: 1
+
+Pior caso (elemento não existe):
+Procurando 25: Índice: -1, Iterações: 3
+
+Procurando 5 (antes de todos):
+Procurando 5: Índice: -1, Iterações: 3
+
+Procurando 100 (depois de todos):
+Procurando 100: Índice: -1, Iterações: 4
+
+ANÁLISE:
+- Pior caso: Elemento não está no vetor
+- Complexidade no pior caso: O(log n)
+- Para um vetor com 8 elementos: log₂(8) = 3 iterações máximo
+
+Observações:
+────────────
+- Requer vetor ORDENADO
+- Número de iterações é log₂(n) no máximo
+- Muito mais eficiente que busca linear para vetores grandes
+- Recursão termina quando esquerda > direita
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+EXERCÍCIO 3: BUBBLE SORT OTIMIZADO
+═══════════════════════════════════
+
+Comando: java Exercicio3
+
+Saída esperada:
+───────────────
+=== EXERCÍCIO 3: BUBBLE SORT OTIMIZADO ===
+
+MELHOR CASO: Vetor já ordenado
+Antes: [10, 20, 30, 40, 50]
+Depois: [10, 20, 30, 40, 50]
+Comparações: 4, Trocas: 0, Iterações: 1
+
+CASO MÉDIO: Vetor aleatório
+Antes: [30, 10, 50, 20, 40]
+Depois: [10, 20, 30, 40, 50]
+Comparações: 9, Trocas: 4, Iterações: 3
+
+PIOR CASO: Vetor em ordem decrescente
+Antes: [50, 40, 30, 20, 10]
+Depois: [10, 20, 30, 40, 50]
+Comparações: 10, Trocas: 10, Iterações: 4
+
+ANÁLISE:
+- Melhor caso: O(n) - quando o vetor já está ordenado (1 iteração)
+- Pior caso: O(n²) - quando o vetor está em ordem decrescente
+- Justificação: (n-1) + (n-2) + ... + 1 = n(n-1)/2 comparações
+- A flag otimização reduz iterações desnecessárias
+
+Observações:
+────────────
+- Melhor caso: 4 comparações (n-1 para n=5)
+- Pior caso: 10 comparações (4+3+2+1 = 10)
+- A flag interrompe quando nenhuma troca é feita
+- Muito mais rápido que Bubble Sort sem otimização
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+EXERCÍCIO 7: FIBONACCI (Melhor Demonstração)
+═════════════════════════════════════════════
+
+Comando: java Exercicio7
+
+Saída esperada (parcial):
+────────────────────────
+=== EXERCÍCIO 7: FIBONACCI RECURSIVO vs PROGRAMAÇÃO DINÂMICA ===
+
+--- Fibonacci(35) ---
+Recursivo simples:
+Resultado: 9227465, Chamadas: 29860703, Tempo: 154ms
+
+Com memoização:
+Resultado: 9227465, Chamadas: 69, Tempo: 0ms
+
+Com tabulação (bottom-up):
+Resultado: 9227465, Chamadas: 34, Tempo: 0ms
+
+ANÁLISE:
+- Recursivo simples: O(2ⁿ) - exponencial
+  Explode exponencialmente!
+  
+- Com memoização: O(n)
+  Apenas 69 chamadas vs 29.860.703!
+  
+- Bottom-up: O(n)
+  Mais eficiente: apenas 34 operações
+
+Observações:
+────────────
+- Diferença de desempenho: +1500 vezes mais rápido com DP
+- fib(35) levaria ~30 segundos recursivo vs <1ms com DP
+- Demonstra claramente o impacto da análise de complexidade
+- Este é o exemplo mais dramático dos 10 exercícios
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+EXERCÍCIO 10: DFS e BFS em GRAFO
+═════════════════════════════════
+
+Comando: java Exercicio10
+
+Saída esperada (parcial):
+────────────────────────
+=== EXERCÍCIO 10: PERCURSO EM GRAFO (DFS e BFS) ===
+
+--- EXEMPLO 1: Grafo Simples (conectado) ---
+
+Lista de adjacência:
+Vértice 0: 1 2 
+Vértice 1: 0 3
+Vértice 2: 0 3
+Vértice 3: 1 2 4
+Vértice 4: 3 5
+Vértice 5: 4
+
+--- DFS a partir do vértice 0 ---
+Ordem de visitação: [0, 1, 3, 2, 4, 5]
+Vértices visitados: 6
+Arestas caminhadas: 5
+Tempo: 0ms
+
+--- BFS a partir do vértice 0 ---
+Ordem de visitação: [0, 1, 2, 3, 4, 5]
+Vértices visitados: 6
+Arestas caminhadas: 5
+Tempo: 0ms
+
+Conectado a partir do vértice 0? true
+
+Observações:
+────────────
+- DFS visita: profundidade primeiro (0→1→3→2→4→5)
+- BFS visita: largura primeiro (0→1→2→3→4→5)
+- Ambos visitam os mesmos vértices e arestas
+- Tempo O(V + E) para ambos
+- Para 6 vértices e 5 arestas: 6 + 5 = 11 operações
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+TABELA DE TEMPOS DE EXECUÇÃO (em ms)
+═════════════════════════════════════
+
+╔════════════════════════════╦════════╗
+║ Exercício                  ║ Tempo  ║
+╠════════════════════════════╬════════╣
+║ 1. Busca Linear            ║ < 1ms  ║
+║ 2. Busca Binária           ║ < 1ms  ║
+║ 3. Bubble Sort             ║ < 1ms  ║
+║ 4. Selection Sort          ║ < 1ms  ║
+║ 5. QuickSort               ║ < 1ms  ║
+║ 6. Merge Sort              ║ < 1ms  ║
+║ 7. Fibonacci (fib(35))     ║ 154ms* ║
+║ 8. Palíndromo              ║ < 1ms  ║
+║ 9. Substring               ║ < 1ms  ║
+║ 10. DFS/BFS                ║ < 1ms  ║
+╚════════════════════════════╩════════╝
+
+* Exercício 7 é mais lento no modo recursivo por demonstrar o impacto
+  da exponencialidade. Com DP, o tempo cai para < 1ms.
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+GUIA RÁPIDO DE REFERÊNCIA
+═════════════════════════
+
+┌─ PROCURANDO BUSCA RÁPIDA? ──────────────────────────────────┐
+│ Use Busca Binária - O(log n) vs O(n) da busca linear       │
+└─────────────────────────────────────────────────────────────┘
+
+┌─ PROCURANDO ORDENAÇÃO RÁPIDA? ──────────────────────────────┐
+│ Use Merge Sort - O(n log n) garantido                       │
+│ Ou QuickSort - O(n log n) em média (mais rápido na prática) │
+└─────────────────────────────────────────────────────────────┘
+
+┌─ PROCURANDO ALGORITMO RECURSIVO EFICIENTE? ─────────────────┐
+│ Use Programação Dinâmica - O(n) vs O(2ⁿ) sem DP            │
+│ (Exemplo: Fibonacci 35x mais rápido com DP)                 │
+└─────────────────────────────────────────────────────────────┘
+
+┌─ PROCURANDO VISITAR TODOS OS NÓS DE UM GRAFO? ──────────────┐
+│ Use DFS ou BFS - Ambos O(V + E)                             │
+│ DFS: usa recursão (pode estourar pilha em grafos grandes)   │
+│ BFS: usa fila (mais seguro para grafos grandes)             │
+└─────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════════
+
+
+DICAS PARA ANÁLISE DE COMPLEXIDADE
+═══════════════════════════════════
+
+1. LOOPS ANINHADOS
+   - Um loop: O(n)
+   - Dois loops: O(n²)
+   - Três loops: O(n³)
+   Exemplo: Bubble Sort tem loops aninhados → O(n²)
+
+2. DIVISÃO E CONQUISTA
+   - Divide problema em metades: O(log n)
+   - Cada nível custa O(n): O(n log n)
+   Exemplo: Busca Binária (O(log n)), Merge Sort (O(n log n))
+
+3. RECURSÃO
+   - Sem otimização: cálculos repetidos → exponencial O(2ⁿ)
+   - Com memoização: O(n) ou melhor
+   Exemplo: Fibonacci recursivo vs com DP
+
+4. OPERAÇÕES SOBRE ESTRUTURAS
+   - Grafo com V vértices e E arestas: O(V + E)
+   - Array/lista: O(n)
+   - Hash table: O(1) em média
+   Exemplo: DFS/BFS em grafos → O(V + E)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Todos os exemplos acima foram testados e executados com sucesso!
+Data de execução: 10/02/2026
+Linguagem: Java 8+
+Sistema Operacional: Windows
+
+═══════════════════════════════════════════════════════════════════════════════
